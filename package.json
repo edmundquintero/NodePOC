@@ -1,0 +1,22 @@
+{
+  "name": "nodepoc",
+  "version": "1.0.0",
+  "description": "Demo for CircleCI",
+  "main": "apps.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/edmundquintero/NodePOC.git"
+  },
+  "author": "Edmund Quintero",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/edmundquintero/NodePOC/issues"
+  },
+  "homepage": "https://github.com/edmundquintero/NodePOC#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
