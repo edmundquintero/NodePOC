@@ -4,7 +4,8 @@
   "description": "Demo for CircleCI",
   "main": "apps.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack src/index.js -o dist/bundle.js"
   },
   "repository": {
     "type": "git",
@@ -17,6 +18,10 @@
   },
   "homepage": "https://github.com/edmundquintero/NodePOC#readme",
   "dependencies": {
+    "@angular/core": "^2.4.8",
     "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "webpack": "^3.11.0"
   }
 }

@@ -1,8 +1,13 @@
 const express = require('express');
 const app = express();
 
+// Server assets from local server
 const assets = express.static('./assets');
 app.use(assets);
+
+//Server app bundle from local server
+const appBundle = express.static('./dist');
+app.use(appBundle);
 
 const router = require('./server/core/router/router');
 app.use(router);
