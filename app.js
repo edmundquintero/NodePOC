@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 
-const router = require('./core/router/router');
+const router = require('./server/core/router/router');
 
 app.use(router);
 
