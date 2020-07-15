@@ -17,6 +17,8 @@ const CoreModule = NgModule({
   // bootstrap:[
   //   AppComponent
   // ]
+}).Class({
+  constructor: () => {}
 });
 
 

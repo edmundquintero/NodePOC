@@ -47922,17 +47922,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
-
 const AppComponent = Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["t" /* Component */])({
   selector: 'dog-app',
   template: '<h1>Hello Angular 2!</h1>'
-})
-.Class({
-  constructor: () => {
-    console.log('App is running!!');
-  }
 });
-
 
 const CoreModule = Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["P" /* NgModule */])({
   imports:[],
@@ -47943,6 +47936,8 @@ const CoreModule = Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["P" /* NgM
   // bootstrap:[
   //   AppComponent
   // ]
+}).Class({
+  constructor: () => {}
 });
 
 
