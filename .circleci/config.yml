@@ -14,13 +14,13 @@ jobs:
       - run: node --version
       - run: |
                 set -xu
-                mkdir -p project
-                cp Dockerfile project
+                ls -lah
+                cp Dockerfile ~/project
       - persist_to_workspace:  # make available for future steps
           root: .
-          path: ./project
+          path: ~/project
       - store_artifacts:
-          path: ./sproject
+          path: ~/project
 workflows:
   build:
     jobs:
@@ -39,6 +39,6 @@ workflows:
           context: matt_dockerhub
           image: mattbrabazon/node-poc
           attach-at: ./ 
-          path: ./project
+          path: ~/project
           docker-username: DOCKER_LOGIN
           docker-password: DOCKER_PASSWORD
