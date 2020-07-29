@@ -8,9 +8,9 @@ jobs:
       - image: circleci/node:dubnium
     steps:
       - checkout
-      - node/with-cache:
-          steps:
-            - run: npm install
+      - node/install-packages:
+          cache-path: ~/project/node_modules
+          override-ci-command: npm install
       - run: node --version
       - persist_to_workspace:  # make available for future steps
           root: .
