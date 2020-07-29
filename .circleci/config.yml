@@ -24,7 +24,7 @@ jobs:
       - persist_to_workspace:  # make available for future steps
           root: ~/
           paths:
-            - *.*
+            - ~/*
             - assets
             - dist
             - server
