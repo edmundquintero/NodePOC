@@ -5,7 +5,7 @@ orbs:
 jobs:
   build-app:
     docker:
-      - image: circleci/node:dubnium
+      - image: circleci/node:dubnium  # 10.22
     steps:
       - checkout
       - node/install-packages:
@@ -16,18 +16,13 @@ jobs:
       - run: |
                 set -xu
                 mkdir artifact
-                cp -r dist artifact/dist
-                cp -r server artifact/server
-                cp package*.json artifact
-                cp app.js artifact
+                rm -rf node_modules
+                cp -r . artifact                
                 ls -lah
       - persist_to_workspace:  # make available for future steps
-          root: ~/
-          paths:
-            - ~/*
-            - assets
-            - dist
-            - server
+          root: .
+          paths: 
+              - artifact
       - store_artifacts:
           path:  ~/project/artifact
 workflows:
@@ -47,7 +42,7 @@ workflows:
             # - node/test
           context: matt_dockerhub
           image: mattbrabazon/node-poc
-          attach-at: ./ 
-          path: ~/project
+          attach-at: ./
+          path: ~/artifact
           docker-username: DOCKER_LOGIN
           docker-password: DOCKER_PASSWORD
