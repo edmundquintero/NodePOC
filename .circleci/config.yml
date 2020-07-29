@@ -30,17 +30,17 @@ workflows:
   build:
     jobs:
       - build-app
-      # - node/test:
-      #     matrix:
-      #       parameters:
-      #         version:
-      #           - 14.6.0
-      #           - 12.18.3
-      #           - 10.22.0
+      - node/test:
+          matrix:
+            parameters:
+              version:
+                - 14.6.0
+                - 12.18.3
+                - 10.22.0
       - docker/publish:
           requires:
             - build-app
-            # - node/test
+            - node/test
           context: matt_dockerhub
           image: mattbrabazon/node-poc
           attach-at: ./
