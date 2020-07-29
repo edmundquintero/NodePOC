@@ -22,8 +22,12 @@ jobs:
                 cp app.js artifact
                 ls -lah
       - persist_to_workspace:  # make available for future steps
-          root: .
-          path: ~/project
+          root: ~/
+          paths:
+            - *.*
+            - assets
+            - dist
+            - server
       - store_artifacts:
           path:  ~/project/artifact
 workflows:
