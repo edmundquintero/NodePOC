@@ -14,7 +14,8 @@ jobs:
       - run: node --version
       - persist_to_workspace:  # make available for future steps
           root: .
-          path: .
+          paths:
+            - project
 workflows:
   build:
     jobs:
@@ -33,5 +34,6 @@ workflows:
           context: matt_dockerhub
           image: mattbrabazon/node-poc
           attach-at: ./ 
+          path: ./project
           docker-username: DOCKER_LOGIN
           docker-password: DOCKER_PASSWORD
