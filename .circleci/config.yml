@@ -14,6 +14,7 @@ jobs:
       - run: node --version
       - persist_to_workspace:  # make available for future steps
           root: .
+          path: .
 workflows:
   build:
     jobs:
