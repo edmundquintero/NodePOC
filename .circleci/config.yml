@@ -10,8 +10,10 @@ jobs:
     steps:
       - checkout
       - node/install-packages:
+          app-dir: ~/poc
           cache-path: ~/poc/node_modules
           override-ci-command: npm install
+
       - run: node --version
       - run: npm run build
       - run: |
