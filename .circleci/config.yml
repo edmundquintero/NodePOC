@@ -14,13 +14,17 @@ jobs:
       - run: node --version
       - run: |
                 set -xu
+                mkdir artifact
+                cp /dist artifact/dist
+                cp server artifact/server
+                cp package*.json artifact
+                cp app.js artifact
                 ls -lah
-                cp Dockerfile ~/project
       - persist_to_workspace:  # make available for future steps
           root: .
           path: ~/project
       - store_artifacts:
-          path: ~/project
+          path:  ~/project/artifact
 workflows:
   build:
     jobs:
