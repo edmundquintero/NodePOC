@@ -16,7 +16,7 @@ jobs:
       - run: |
                 set -xu
                 mkdir artifact
-                cp /dist artifact/dist
+                cp dist artifact/dist
                 cp server artifact/server
                 cp package*.json artifact
                 cp app.js artifact
