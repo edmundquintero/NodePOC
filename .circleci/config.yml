@@ -10,22 +10,22 @@ jobs:
     steps:
       - checkout
       - node/install-packages:
-          app-dir: ~/poc
-          cache-path: ~/poc/node_modules
+          app-dir: .
+          cache-path: node_modules
           override-ci-command: npm install
 
       - run: node --version
       - run: npm run build
       - run: |
                 set -xu
-                mkdir ~/artifact
+                rm -rf node_modules
                 ls -lah
       - persist_to_workspace:  # make available for future steps
-          root: ~/
+          root: .
           paths:
               - poc
       - store_artifacts:
-          path: ~/artifact
+          path: .
 workflows:
   build:
     jobs:
@@ -44,6 +44,6 @@ workflows:
           context: matt_dockerhub
           image: mattbrabazon/node-poc
           attach-at: ./
-          path: ./artifact
+          path: ./poc
           docker-username: DOCKER_LOGIN
           docker-password: DOCKER_PASSWORD
