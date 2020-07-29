@@ -12,10 +12,15 @@ jobs:
           cache-path: ~/project/node_modules
           override-ci-command: npm install
       - run: node --version
+      - run: |
+                set -xu
+                mkdir -p project
+                cp Dockerfile project
       - persist_to_workspace:  # make available for future steps
           root: .
-          paths:
-            - project
+          path: ./project
+      - store_artifacts:
+          path: ./sproject
 workflows:
   build:
     jobs:
