@@ -18,14 +18,14 @@ jobs:
       - run: npm run build
       - run: |
                 set -xu
-                mkdir ~/artifact           
+                mkdir ~/artifact
                 ls -lah
       - persist_to_workspace:  # make available for future steps
-          root: .
+          root: ~/
           paths:
-              - artifact
+              - poc
       - store_artifacts:
-          path: poc/artifact
+          path: ~/artifact
 workflows:
   build:
     jobs:
