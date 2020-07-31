@@ -4,8 +4,9 @@
   "description": "Demo for CircleCI",
   "main": "apps.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack src/index.js --output-filename dist/bundle.js"
+    "test": "echo \"No real tests. Just a sample.\" && exit 0",
+    "build": "webpack src/index.js --output-filename dist/bundle.js",
+    "start": "node app"
   },
   "repository": {
     "type": "git",

@@ -1,16 +1,49 @@
 version: 2.1
 orbs:
-  node: circleci/node@1.1.6
+  node: circleci/node@3.0.1
+  docker: circleci/docker@1.3.0
 jobs:
-  build:
-    executor:
-      name: node/default
+  build-app:
+    working_directory: ~/poc
+    docker:
+      - image: circleci/node:dubnium  # 10.22
     steps:
       - checkout
-      - node/with-cache:
-          steps:
-            - run: npm install
+      - node/install-packages:
+          app-dir: .
+          cache-path: node_modules
+          override-ci-command: npm install
+
+      - run: node --version
+      - run: npm run build
+      - run: |
+                set -xu
+                rm -rf node_modules .git
+                ls -lah
+      - persist_to_workspace:  # make available for future steps
+          root: ~/
+          paths:
+              - poc
+      - store_artifacts:
+          path: .
 workflows:
-    build:
-      jobs:
-        - build
+  build:
+    jobs:
+      - build-app
+      - node/test:
+          matrix:
+            parameters:
+              version:
+                - 14.6.0
+                - 12.18.3
+                - 10.22.0
+      - docker/publish:
+          requires:
+            - build-app
+            - node/test
+          context: matt_dockerhub
+          image: mattbrabazon/node-poc
+          attach-at: ./
+          path: ./poc
+          docker-username: DOCKER_LOGIN
+          docker-password: DOCKER_PASSWORD
